@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { ref, onMounted, computed } from 'vue'
+  import { ref } from 'vue'
   import PhoneFrame from '@/components/phone/PhoneFrame.vue'
   import AppDetailModal from '@/components/phone/AppDetailModal.vue'
   import DockModal from '@/components/phone/DockModal.vue'
