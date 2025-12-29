@@ -1,12 +1,12 @@
 <script setup lang="ts">
-  import { ref } from 'vue'
+  import { ref, computed } from 'vue'
   import type { AppSection, DockApp, AppItem } from '@/types/portfolio'
-  import { useNavigation } from '@/composables/useNavigation'
   import StatusBar from './StatusBar.vue'
   import AppGrid from './AppGrid.vue'
   import PageIndicator from './PageIndicator.vue'
   import DockBar from './DockBar.vue'
-  import AppDetailView from './AppDetailView.vue'
+  import AppView from './AppView.vue'
+  import DockView from './DockView.vue'
 
   interface Props {
     sections: AppSection[]
@@ -20,32 +20,48 @@
 
   const currentPage = ref(1)
 
-  // Navigation state management
-  const {
-    currentApp,
-    isOnHomeScreen,
-    isViewingApp,
-    handleHomeClick,
-    handleAppOpen,
-  } = useNavigation()
+  // Estado para app/dock selecionado
+  const selectedApp = ref<AppItem | null>(null)
+  const selectedDockApp = ref<DockApp | null>(null)
+  const isAppOpen = ref(false)
+  const isDockOpen = ref(false)
+  
+  // Controle do tipo de fechamento (swipe ou scale)
+  const closeType = ref<'swipe' | 'scale'>('scale')
 
-  const emit = defineEmits<{
-    'app-click': [app: AppItem]
-    'dock-click': [app: DockApp]
-  }>()
+  // Computed para verificar se alguma view está aberta
+  const isAnyViewOpen = computed(() => isAppOpen.value || isDockOpen.value)
 
   const handleAppClick = (app: AppItem) => {
-    handleAppOpen(app)
-    emit('app-click', app)
+    selectedApp.value = app
+    isAppOpen.value = true
   }
 
   const handleDockClick = (app: DockApp) => {
-    handleAppOpen(app)
-    emit('dock-click', app)
+    selectedDockApp.value = app
+    isDockOpen.value = true
   }
 
-  const onBackClick = () => {
-    handleHomeClick() // Vai direto para home
+  // Fechar com swipe (botão back)
+  const closeWithSwipe = () => {
+    closeType.value = 'swipe'
+    isAppOpen.value = false
+    isDockOpen.value = false
+    setTimeout(() => {
+      selectedApp.value = null
+      selectedDockApp.value = null
+    }, 300)
+  }
+
+  // Fechar com scale (botão home)
+  const closeWithScale = () => {
+    closeType.value = 'scale'
+    isAppOpen.value = false
+    isDockOpen.value = false
+    setTimeout(() => {
+      selectedApp.value = null
+      selectedDockApp.value = null
+    }, 300)
   }
 </script>
 
@@ -54,30 +70,52 @@
     <div class="phone-notch"></div>
     <div class="phone-screen">
       <StatusBar />
+      <div class="phone-content" :class="{ 'close-swipe': closeType === 'swipe' }">
+        <!-- Home Screen -->
+        <Transition :name="closeType === 'swipe' ? 'home-swipe' : 'home-scale'">
+          <div v-show="!isAnyViewOpen" class="home-screen">
+            <AppGrid :sections="sections" @app-click="handleAppClick" />
+          </div>
+        </Transition>
 
-      <!-- Home View -->
-      <div v-if="isOnHomeScreen" class="phone-content">
-        <AppGrid :sections="sections" @app-click="handleAppClick" />
+        <!-- App View -->
+        <Transition :name="closeType === 'swipe' ? 'app-swipe' : 'app-scale'">
+          <AppView
+            v-if="isAppOpen && selectedApp"
+            :app="selectedApp"
+            @close="closeWithSwipe"
+          />
+        </Transition>
+
+        <!-- Dock View -->
+        <Transition :name="closeType === 'swipe' ? 'app-swipe' : 'app-scale'">
+          <DockView
+            v-if="isDockOpen && selectedDockApp"
+            :app="selectedDockApp"
+            @close="closeWithSwipe"
+          />
+        </Transition>
       </div>
-
-      <!-- App Detail View -->
-      <AppDetailView
-        v-if="isViewingApp && currentApp"
-        :app="currentApp"
-        @back="onBackClick"
-      />
-
-      <!-- Page Indicator (only on home screen) -->
       <PageIndicator
-        v-if="isOnHomeScreen && totalPages > 1"
+        v-if="totalPages > 1 && !isAnyViewOpen"
         :total="totalPages"
         :current="currentPage"
         @update:current="currentPage = $event"
       />
-
-      <!-- Dock Bar (only on home screen) -->
-      <DockBar v-if="isOnHomeScreen" :apps="dockApps" @app-click="handleDockClick" />
-
+      <DockBar v-show="!isAnyViewOpen" :apps="dockApps" @app-click="handleDockClick" />
+    </div>
+    
+    <!-- Phone Footer com Home Button -->
+    <div class="phone-footer">
+      <button 
+        class="home-button" 
+        :class="{ active: isAnyViewOpen }"
+        @click="closeWithScale"
+        :disabled="!isAnyViewOpen"
+        aria-label="Voltar para início"
+      >
+        <v-icon name="md-home" scale="1.2" class="home-icon" />
+      </button>
     </div>
   </div>
 </template>
@@ -119,5 +157,142 @@
     display: flex;
     flex-direction: column;
     overflow: hidden;
+    position: relative;
+  }
+
+  .home-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  /* Phone Footer */
+  .phone-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 0 8px;
+    background-color: var(--phone-frame-bg);
+  }
+
+  .home-button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--phone-notch);
+    border: 3px solid var(--home-button-border);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    opacity: 0.5;
+  }
+
+  .home-button:not(:disabled) {
+    opacity: 1;
+  }
+
+  .home-button:not(:disabled):hover {
+    transform: scale(1.01);
+    box-shadow: 0 0 0 1px var(--phone-screen-border);
+  }
+
+  .home-button:not(:disabled):active {
+    transform: scale(0.95);
+  }
+
+  .home-icon {
+    width: 20px;
+    height: 20px;
+    color: var(--home-icon-color);
+    transition: all 0.2s ease;
+    fill: currentColor;
+  }
+
+  .home-button.active .home-icon {
+    color: var(--home-icon-color);
+  }
+
+  /* ========== SCALE ANIMATIONS (Home Button) ========== */
+  
+  /* Home Screen - Scale */
+  .home-scale-enter-active,
+  .home-scale-leave-active {
+    transition: all 0.3s ease;
+  }
+
+  .home-scale-enter-from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  .home-scale-leave-to {
+    opacity: 0;
+    transform: scale(1.1);
+  }
+
+  /* App - Scale */
+  .app-scale-enter-active {
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .app-scale-leave-active {
+    transition: all 0.25s ease-in;
+  }
+
+  .app-scale-enter-from {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+
+  .app-scale-leave-to {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+
+  /* ========== SWIPE ANIMATIONS (Back Button) ========== */
+  
+  /* Home Screen - Swipe */
+  .home-swipe-enter-active {
+    transition: all 0.3s ease-out;
+  }
+
+  .home-swipe-leave-active {
+    transition: all 0.25s ease-in;
+  }
+
+  .home-swipe-enter-from {
+    opacity: 0;
+    transform: translateX(-30%);
+  }
+
+  .home-swipe-leave-to {
+    opacity: 0;
+    transform: translateX(-30%);
+  }
+
+  /* App - Swipe */
+  .app-swipe-enter-active {
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .app-swipe-leave-active {
+    transition: all 0.25s ease-in;
+  }
+
+  .app-swipe-enter-from {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+
+  .app-swipe-leave-to {
+    opacity: 0;
+    transform: translateX(100%);
   }
 </style>

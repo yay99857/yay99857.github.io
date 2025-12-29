@@ -54,6 +54,9 @@
   --toggle-bg: #000;
   --toggle-color: #fff;
   
+  --home-icon-color: #fff;
+  --home-button-border: #666;
+  
   --shadow-color: #666;
   --scanline-opacity: 0.02;
 }
@@ -63,7 +66,7 @@
   --bg-gradient-2: #0a0a0a;
   --bg-gradient-3: #000;
   
-  --phone-frame-bg: #333;
+  --phone-frame-bg: #111;
   --phone-frame-border: #fff;
   --phone-notch: #666;
   --phone-screen-bg: #000;
@@ -100,6 +103,9 @@
   
   --toggle-bg: #fff;
   --toggle-color: #000;
+  
+  --home-icon-color: #fff;
+  --home-button-border: #fff;
   
   --shadow-color: #000;
   --scanline-opacity: 0.03;

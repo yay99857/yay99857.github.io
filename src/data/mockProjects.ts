@@ -87,7 +87,7 @@ export const appSections: AppSection[] = [
 ]
 
 export const dockApps: DockApp[] = [
-  { id: 'about', name: 'Sobre Mim', icon: 'mdi:account', route: '/about' },
+  { id: 'about', name: 'Sobre Mim', icon: 'mdi:account-circle', route: '/about' },
   { id: 'gallery', name: 'Galeria', icon: 'mdi:image-multiple', route: '/gallery' },
   { id: 'skills', name: 'Skills', icon: 'mdi:code-tags', route: '/skills' },
   { id: 'contact', name: 'Contato', icon: 'mdi:email', route: '/contact' },
