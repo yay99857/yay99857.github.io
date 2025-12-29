@@ -17,7 +17,6 @@ declare module 'vue' {
     AppView: typeof import('./../components/phone/AppView.vue')['default']
     Button: typeof import('./../components/ui/Button.vue')['default']
     DockBar: typeof import('./../components/phone/DockBar.vue')['default']
-    DockModal: typeof import('./../components/phone/DockModal.vue')['default']
     DockView: typeof import('./../components/phone/DockView.vue')['default']
     ImageViewer: typeof import('./../components/ui/ImageViewer.vue')['default']
     PageIndicator: typeof import('./../components/phone/PageIndicator.vue')['default']

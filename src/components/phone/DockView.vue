@@ -6,7 +6,7 @@ interface Props {
 }
 
 defineProps<Props>()
-const emit = defineEmits<{
+defineEmits<{
   close: []
 }>()
 
