@@ -1,0 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  image-rendering: pixelated;
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: unset;
+}
+
+:root {
+  --font-pixel: 'Press Start 2P', monospace;
+  --font-body: 'IBM Plex Mono', monospace;
+  /* Light theme - Black & White */
+  --bg-gradient-1: #c0c0c0;
+  --bg-gradient-2: #a0a0a0;
+  --bg-gradient-3: #808080;
+  
+  --phone-frame-bg: #000;
+  --phone-frame-border: #000;
+  --phone-notch: #333;
+  --phone-screen-bg: #fff;
+  --phone-screen-border: #000;
+  
+  --status-bar-bg: #e0e0e0;
+  --status-bar-text: #000;
+  --status-bar-border: #000;
+  
+  --section-bg: #fff;
+  --section-title-bg: #e0e0e0;
+  --section-title-text: #000;
+  --section-border-light: #fff;
+  --section-border-dark: #000;
+  
+  --icon-bg: #fff;
+  --icon-bg-hover: #e0e0e0;
+  --icon-color: #000;
+  --icon-border-light: #fff;
+  --icon-border-dark: #000;
+  
+  --text-primary: #000;
+  --text-secondary: #333;
+  --text-muted: #666;
+  
+  --modal-bg: #fff;
+  --modal-header-bg: #e0e0e0;
+  --modal-body-bg: #fff;
+  --modal-border: #000;
+  
+  --tooltip-bg: #fff;
+  --tooltip-text: #000;
+  --tooltip-border: #000;
+  
+  --toggle-bg: #000;
+  --toggle-color: #fff;
+  
+  --shadow-color: #666;
+  --scanline-opacity: 0.02;
+}
+
+.dark {
+  --bg-gradient-1: #1a1a1a;
+  --bg-gradient-2: #0a0a0a;
+  --bg-gradient-3: #000;
+  
+  --phone-frame-bg: #333;
+  --phone-frame-border: #fff;
+  --phone-notch: #666;
+  --phone-screen-bg: #000;
+  --phone-screen-border: #fff;
+  
+  --status-bar-bg: #1a1a1a;
+  --status-bar-text: #fff;
+  --status-bar-border: #fff;
+  
+  --section-bg: #000;
+  --section-title-bg: #1a1a1a;
+  --section-title-text: #fff;
+  --section-border-light: #333;
+  --section-border-dark: #fff;
+  
+  --icon-bg: #000;
+  --icon-bg-hover: #1a1a1a;
+  --icon-color: #fff;
+  --icon-border-light: #333;
+  --icon-border-dark: #fff;
+  
+  --text-primary: #fff;
+  --text-secondary: #ccc;
+  --text-muted: #999;
+  
+  --modal-bg: #000;
+  --modal-header-bg: #1a1a1a;
+  --modal-body-bg: #000;
+  --modal-border: #fff;
+  
+  --tooltip-bg: #000;
+  --tooltip-text: #fff;
+  --tooltip-border: #fff;
+  
+  --toggle-bg: #fff;
+  --toggle-color: #000;
+  
+  --shadow-color: #000;
+  --scanline-opacity: 0.03;
+}
