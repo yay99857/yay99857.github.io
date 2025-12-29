@@ -1,10 +1,12 @@
 <script setup lang="ts">
   import { ref } from 'vue'
   import type { AppSection, DockApp, AppItem } from '@/types/portfolio'
+  import { useNavigation } from '@/composables/useNavigation'
   import StatusBar from './StatusBar.vue'
   import AppGrid from './AppGrid.vue'
   import PageIndicator from './PageIndicator.vue'
   import DockBar from './DockBar.vue'
+  import AppDetailView from './AppDetailView.vue'
 
   interface Props {
     sections: AppSection[]
@@ -18,17 +20,32 @@
 
   const currentPage = ref(1)
 
+  // Navigation state management
+  const {
+    currentApp,
+    isOnHomeScreen,
+    isViewingApp,
+    handleHomeClick,
+    handleAppOpen,
+  } = useNavigation()
+
   const emit = defineEmits<{
     'app-click': [app: AppItem]
     'dock-click': [app: DockApp]
   }>()
 
   const handleAppClick = (app: AppItem) => {
+    handleAppOpen(app)
     emit('app-click', app)
   }
 
   const handleDockClick = (app: DockApp) => {
+    handleAppOpen(app)
     emit('dock-click', app)
+  }
+
+  const onBackClick = () => {
+    handleHomeClick() // Vai direto para home
   }
 </script>
 
@@ -37,16 +54,30 @@
     <div class="phone-notch"></div>
     <div class="phone-screen">
       <StatusBar />
-      <div class="phone-content">
+
+      <!-- Home View -->
+      <div v-if="isOnHomeScreen" class="phone-content">
         <AppGrid :sections="sections" @app-click="handleAppClick" />
       </div>
+
+      <!-- App Detail View -->
+      <AppDetailView
+        v-if="isViewingApp && currentApp"
+        :app="currentApp"
+        @back="onBackClick"
+      />
+
+      <!-- Page Indicator (only on home screen) -->
       <PageIndicator
-        v-if="totalPages > 1"
+        v-if="isOnHomeScreen && totalPages > 1"
         :total="totalPages"
         :current="currentPage"
         @update:current="currentPage = $event"
       />
-      <DockBar :apps="dockApps" @app-click="handleDockClick" />
+
+      <!-- Dock Bar (only on home screen) -->
+      <DockBar v-if="isOnHomeScreen" :apps="dockApps" @app-click="handleDockClick" />
+
     </div>
   </div>
 </template>
@@ -66,7 +97,7 @@
   .phone-notch {
     position: absolute;
     top: 4px;
-    left: 50%;
+    left: 52%;
     transform: translateX(-50%);
     width: 60px;
     height: 4px;

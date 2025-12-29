@@ -42,32 +42,32 @@ export const appSections: AppSection[] = [
       },
     ],
   },
-//   {
-//     title: 'Apps Mobile',
-//     apps: [
-//       {
-//         id: '5',
-//         name: 'Fitness App',
-//         icon: 'mdi:run',
-//         category: 'mobile',
-//         description:
-//           'Aplicativo de fitness com tracking de exercícios, planos de treino personalizados e integração com wearables. Inclui gamificação e desafios sociais.',
-//         technologies: ['React Native', 'Redux', 'Node.js', 'MongoDB'],
-//         demoUrl: 'https://demo.example.com/fitness',
-//         githubUrl: 'https://github.com/user/fitness-app',
-//       },
-//       {
-//         id: '6',
-//         name: 'Weather',
-//         icon: 'mdi:weather-sunny',
-//         category: 'mobile',
-//         description:
-//           'App de previsão do tempo com dados em tempo real, alertas meteorológicos e widgets personalizáveis. Interface minimalista e intuitiva.',
-//         technologies: ['Flutter', 'Dart', 'OpenWeather API'],
-//         githubUrl: 'https://github.com/user/weather-app',
-//       },
-//     ],
-//   },
+  //   {
+  //     title: 'Apps Mobile',
+  //     apps: [
+  //       {
+  //         id: '5',
+  //         name: 'Fitness App',
+  //         icon: 'mdi:run',
+  //         category: 'mobile',
+  //         description:
+  //           'Aplicativo de fitness com tracking de exercícios, planos de treino personalizados e integração com wearables. Inclui gamificação e desafios sociais.',
+  //         technologies: ['React Native', 'Redux', 'Node.js', 'MongoDB'],
+  //         demoUrl: 'https://demo.example.com/fitness',
+  //         githubUrl: 'https://github.com/user/fitness-app',
+  //       },
+  //       {
+  //         id: '6',
+  //         name: 'Weather',
+  //         icon: 'mdi:weather-sunny',
+  //         category: 'mobile',
+  //         description:
+  //           'App de previsão do tempo com dados em tempo real, alertas meteorológicos e widgets personalizáveis. Interface minimalista e intuitiva.',
+  //         technologies: ['Flutter', 'Dart', 'OpenWeather API'],
+  //         githubUrl: 'https://github.com/user/weather-app',
+  //       },
+  //     ],
+  //   },
   {
     title: 'Ferramentas',
     apps: [

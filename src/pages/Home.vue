@@ -1,67 +1,15 @@
 <script setup lang="ts">
-  import { ref } from 'vue'
   import PhoneFrame from '@/components/phone/PhoneFrame.vue'
-  import AppDetailModal from '@/components/phone/AppDetailModal.vue'
-  import DockModal from '@/components/phone/DockModal.vue'
   import ThemeToggle from '@/components/ui/ThemeToggle.vue'
   import { appSections, dockApps } from '@/data/mockProjects'
-  import type { AppItem, DockApp } from '@/types/portfolio'
-
-  // Estado para o app selecionado e controle do modal
-  const selectedApp = ref<AppItem | null>(null)
-  const isModalOpen = ref(false)
-
-  // Estado para o dock modal
-  const selectedDockApp = ref<DockApp | null>(null)
-  const isDockModalOpen = ref(false)
-
-  const handleAppClick = (app: AppItem) => {
-    selectedApp.value = app
-    isModalOpen.value = true
-  }
-
-  const handleCloseModal = () => {
-    isModalOpen.value = false
-    selectedApp.value = null
-  }
-
-  const handleDockClick = (app: DockApp) => {
-    selectedDockApp.value = app
-    isDockModalOpen.value = true
-  }
-
-  const handleCloseDockModal = () => {
-    isDockModalOpen.value = false
-    selectedDockApp.value = null
-  }
 </script>
 
 <template>
   <div class="home">
     <div class="content-wrapper">
-      <PhoneFrame
-        :sections="appSections"
-        :dock-apps="dockApps"
-        :total-pages="1"
-        @app-click="handleAppClick"
-        @dock-click="handleDockClick"
-      />
+      <PhoneFrame :sections="appSections" :dock-apps="dockApps" :total-pages="1" />
       <ThemeToggle />
     </div>
-
-    <!-- Modal de detalhes do app -->
-    <AppDetailModal
-      :app="selectedApp"
-      :is-open="isModalOpen"
-      @close="handleCloseModal"
-    />
-
-    <!-- Modal do dock (About, Gallery, Skills, Contact) -->
-    <DockModal
-      :app="selectedDockApp"
-      :is-open="isDockModalOpen"
-      @close="handleCloseDockModal"
-    />
   </div>
 </template>
 

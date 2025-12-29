@@ -30,7 +30,7 @@
   <div class="status-bar">
     <div class="status-left">
       <Icon icon="mdi:signal-cellular-3" class="status-icon" />
-      <span class="network-type">4G</span>
+      <span class="network-type">1G</span>
     </div>
     <div class="status-center">
       <span class="time">{{ currentTime }}</span>

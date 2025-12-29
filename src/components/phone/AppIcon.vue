@@ -102,7 +102,9 @@
     box-shadow: 4px 4px 0 var(--shadow-color);
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.15s ease, visibility 0.15s ease;
+    transition:
+      opacity 0.15s ease,
+      visibility 0.15s ease;
     z-index: 100;
     pointer-events: none;
   }
