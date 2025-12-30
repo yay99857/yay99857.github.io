@@ -15,7 +15,6 @@ export const appSections: AppSection[] = [
         technologies: ['Next.js', 'Stripe', 'GoLang', 'Redis', 'Supabase'],
         screenshot: '/jogajunto.png',
         demoUrl: 'https://juntojoga.vercel.app/',
-        githubUrl: 'https://github.com/user/jogajunto',
       },
       {
         id: '2',
@@ -27,7 +26,6 @@ export const appSections: AppSection[] = [
         technologies: ['React', 'YouTube API', 'Redux'],
         screenshot: '/calme.png',
         demoUrl: 'https://calme.vercel.app/',
-        githubUrl: 'https://github.com/user/calme',
       },
       {
         id: '3',
@@ -38,7 +36,6 @@ export const appSections: AppSection[] = [
           'Você está olhando para ele! Um portfólio interativo com estética retrô, simulando a interface de um cetigo para apresentar meus projetos de forma criativa.',
         technologies: ['Vue.js'],
         screenshot: '/hello.png',
-        githubUrl: 'https://github.com/user/blog',
       },
     ],
   },
@@ -80,7 +77,7 @@ export const appSections: AppSection[] = [
           'Editor de notas minimalista com suporte a Markdown. Interface limpa e focada na escrita, com preview em tempo real.',
         technologies: ['React.js', 'Tauri', 'SQLite'],
         screenshot: '/skuld.png',
-        githubUrl: 'https://github.com/user/skuld',
+        githubUrl: 'https://github.com/yay99857/skuld',
       },
     ],
   },
