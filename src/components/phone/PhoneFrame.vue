@@ -224,71 +224,71 @@
   /* Home Screen - Scale */
   .home-scale-enter-active,
   .home-scale-leave-active {
-    transition: all 0.3s ease;
+    transition: all 0.4s ease;
   }
 
   .home-scale-enter-from {
     opacity: 0;
-    transform: scale(0.9);
+    transform: scale(0.95);
   }
 
   .home-scale-leave-to {
     opacity: 0;
-    transform: scale(1.1);
+    transform: scale(1.05);
   }
 
   /* App - Scale */
   .app-scale-enter-active {
-    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
   .app-scale-leave-active {
-    transition: all 0.25s ease-in;
+    transition: all 0.35s ease-out;
   }
 
   .app-scale-enter-from {
     opacity: 0;
-    transform: scale(0.3);
+    transform: scale(0.5);
   }
 
   .app-scale-leave-to {
     opacity: 0;
-    transform: scale(0.5);
+    transform: scale(0.7);
   }
 
   /* ========== SWIPE ANIMATIONS (Back Button) ========== */
   
   /* Home Screen - Swipe */
   .home-swipe-enter-active {
-    transition: all 0.3s ease-out;
+    transition: all 0.4s ease-out;
   }
 
   .home-swipe-leave-active {
-    transition: all 0.25s ease-in;
+    transition: all 0.3s ease-in;
   }
 
   .home-swipe-enter-from {
     opacity: 0;
-    transform: translateX(-30%);
+    transform: translateX(-20%);
   }
 
   .home-swipe-leave-to {
     opacity: 0;
-    transform: translateX(-30%);
+    transform: translateX(-20%);
   }
 
   /* App - Swipe */
   .app-swipe-enter-active {
-    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   }
 
   .app-swipe-leave-active {
-    transition: all 0.25s ease-in;
+    transition: all 0.3s ease-in;
   }
 
   .app-swipe-enter-from {
     opacity: 0;
-    transform: scale(0.3);
+    transform: scale(0.5);
   }
 
   .app-swipe-leave-to {

@@ -88,6 +88,16 @@ const closeImageViewer = () => {
           <v-icon name="bi-github" />
           Código
         </a>
+        <a
+          v-if="app.downloadUrl"
+          :href="app.downloadUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-secondary"
+        >
+          <v-icon name="md-download" />
+          Download
+        </a>
       </div>
     </div>
 

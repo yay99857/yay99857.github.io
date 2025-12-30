@@ -78,6 +78,7 @@ export const appSections: AppSection[] = [
         technologies: ['React.js', 'Tauri', 'SQLite'],
         screenshot: '/skuld.png',
         githubUrl: 'https://github.com/yay99857/skuld',
+        downloadUrl: 'https://github.com/yay99857/skuld/releases/tag/0.1.0',
       },
     ],
   },

@@ -9,6 +9,7 @@ export interface AppItem {
   screenshot?: string // URL da imagem de preview
   demoUrl?: string // Link para demo ao vivo
   githubUrl?: string // Link para repositório GitHub
+  downloadUrl?: string // Link para download
 }
 
 export interface AppSection {
