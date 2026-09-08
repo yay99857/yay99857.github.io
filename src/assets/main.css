@@ -110,3 +110,15 @@
   --shadow-color: #000;
   --scanline-opacity: 0.03;
 }
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  font-family: var(--font-body);
+  color: var(--text-primary);
+}
+
+#app {
+  width: 100%;
+  text-align: center;
+}
