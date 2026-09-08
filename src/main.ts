@@ -17,7 +17,7 @@ import {
   BiLinkedin,
   BiImage,
   BiImages,
-  BiCodeSlash
+  BiCodeSlash,
 } from 'oh-vue-icons/icons'
 
 addIcons(

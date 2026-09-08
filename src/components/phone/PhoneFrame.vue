@@ -25,7 +25,7 @@
   const selectedDockApp = ref<DockApp | null>(null)
   const isAppOpen = ref(false)
   const isDockOpen = ref(false)
-  
+
   // Controle do tipo de fechamento (swipe ou scale)
   const closeType = ref<'swipe' | 'scale'>('scale')
 
@@ -80,11 +80,7 @@
 
         <!-- App View -->
         <Transition :name="closeType === 'swipe' ? 'app-swipe' : 'app-scale'">
-          <AppView
-            v-if="isAppOpen && selectedApp"
-            :app="selectedApp"
-            @close="closeWithSwipe"
-          />
+          <AppView v-if="isAppOpen && selectedApp" :app="selectedApp" @close="closeWithSwipe" />
         </Transition>
 
         <!-- Dock View -->
@@ -104,15 +100,15 @@
       />
       <DockBar v-show="!isAnyViewOpen" :apps="dockApps" @app-click="handleDockClick" />
     </div>
-    
+
     <!-- Phone Footer com Home Button -->
     <div class="phone-footer">
-      <button 
-        class="home-button" 
+      <button
+        class="home-button"
         :class="{ active: isAnyViewOpen }"
-        @click="closeWithScale"
         :disabled="!isAnyViewOpen"
         aria-label="Voltar para início"
+        @click="closeWithScale"
       >
         <v-icon name="md-home" scale="1.2" class="home-icon" />
       </button>
@@ -220,7 +216,7 @@
   }
 
   /* ========== SCALE ANIMATIONS (Home Button) ========== */
-  
+
   /* Home Screen - Scale */
   .home-scale-enter-active,
   .home-scale-leave-active {
@@ -257,7 +253,7 @@
   }
 
   /* ========== SWIPE ANIMATIONS (Back Button) ========== */
-  
+
   /* Home Screen - Swipe */
   .home-swipe-enter-active {
     transition: all 0.4s ease-out;

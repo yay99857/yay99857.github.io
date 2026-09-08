@@ -155,7 +155,7 @@ describe('Navigation Flow Integration', () => {
     await wrapper.vm.$nextTick()
 
     // Verify first app is displayed
-    let appDetailView = wrapper.findComponent({ name: 'AppDetailView' })
+    const appDetailView = wrapper.findComponent({ name: 'AppDetailView' })
     expect(appDetailView.props('app')).toEqual(mockSections[0].apps[0])
 
     // Go back to home using back button
