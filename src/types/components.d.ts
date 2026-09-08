@@ -11,17 +11,14 @@ export {}
 /* prettier-ignore */
 declare module 'vue' {
   export interface GlobalComponents {
-    AppDetailView: typeof import('./../components/phone/AppDetailView.vue')['default']
     AppGrid: typeof import('./../components/phone/AppGrid.vue')['default']
     AppIcon: typeof import('./../components/phone/AppIcon.vue')['default']
     AppView: typeof import('./../components/phone/AppView.vue')['default']
-    Button: typeof import('./../components/ui/Button.vue')['default']
     DockBar: typeof import('./../components/phone/DockBar.vue')['default']
     DockView: typeof import('./../components/phone/DockView.vue')['default']
     ImageViewer: typeof import('./../components/ui/ImageViewer.vue')['default']
     PageIndicator: typeof import('./../components/phone/PageIndicator.vue')['default']
     PhoneFrame: typeof import('./../components/phone/PhoneFrame.vue')['default']
-    PhoneNavigation: typeof import('./../components/phone/PhoneNavigation.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     StatusBar: typeof import('./../components/phone/StatusBar.vue')['default']
