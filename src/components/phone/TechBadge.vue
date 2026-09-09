@@ -19,10 +19,4 @@
     font-family: var(--font-body);
     transition: all 0.3s ease;
   }
-
-  .tech-badge:hover {
-    background-color: var(--icon-bg-hover);
-    transform: translate(-1px, -1px);
-    box-shadow: 2px 2px 0 var(--icon-border-dark);
-  }
 </style>

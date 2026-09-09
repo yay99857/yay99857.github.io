@@ -227,19 +227,6 @@ Quando não estou programando, gosto de explorar novas tecnologias e tomar um bo
     background-color: var(--icon-bg);
     border: 2px solid var(--icon-border-dark);
     box-shadow: 4px 4px 0 var(--icon-border-dark);
-    cursor: pointer;
-    transition: all 0.1s ease;
-  }
-
-  .gallery-item:hover {
-    background-color: var(--icon-bg-hover);
-    transform: translate(-2px, -2px);
-    box-shadow: 6px 6px 0 var(--icon-border-dark);
-  }
-
-  .gallery-item:active {
-    transform: translate(2px, 2px);
-    box-shadow: none;
   }
 
   .gallery-item svg {
@@ -285,12 +272,6 @@ Quando não estou programando, gosto de explorar novas tecnologias e tomar um bo
     font-size: 10px;
     color: var(--text-primary);
     font-family: var(--font-body);
-    transition: all 0.1s ease;
-  }
-
-  .skill-badge:hover {
-    transform: translate(-1px, -1px);
-    box-shadow: 2px 2px 0 var(--icon-border-dark);
   }
 
   /* Contact */
