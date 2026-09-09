@@ -35,7 +35,15 @@
         <v-icon name="md-chevronleft" />
       </button>
       <div class="app-title">
-        <AppIcon :icon="app.icon" :name="app.name" :show-name="false" class="header-icon" />
+        <!-- decorativo: o nome do app já aparece ao lado, e o AppIcon é um <button> -->
+        <AppIcon
+          :icon="app.icon"
+          :name="app.name"
+          :show-name="false"
+          class="header-icon"
+          aria-hidden="true"
+          tabindex="-1"
+        />
         <span>{{ app.name }}</span>
       </div>
       <div class="header-spacer"></div>

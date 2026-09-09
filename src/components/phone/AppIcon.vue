@@ -19,13 +19,13 @@
 </script>
 
 <template>
-  <div class="app-icon" @click="$emit('click')">
-    <div class="icon-container">
+  <button type="button" class="app-icon" :aria-label="name" @click="$emit('click')">
+    <span class="icon-container">
       <Icon :icon="icon" class="icon" />
       <span v-if="showTooltip" class="tooltip">{{ name }}</span>
-    </div>
+    </span>
     <span v-if="showName" class="app-name">{{ name }}</span>
-  </div>
+  </button>
 </template>
 
 <style scoped>
@@ -36,6 +36,17 @@
     gap: 6px;
     cursor: pointer;
     transition: transform 0.1s ease;
+    /* reset do <button> para preservar a aparência que o <div> tinha */
+    padding: 0;
+    background: none;
+    border: none;
+    font: inherit;
+    color: inherit;
+  }
+
+  .app-icon:focus-visible {
+    outline: 2px solid var(--text-primary);
+    outline-offset: 3px;
   }
 
   .app-icon:hover {
@@ -109,7 +120,8 @@
     pointer-events: none;
   }
 
-  .app-icon:hover .tooltip {
+  .app-icon:hover .tooltip,
+  .app-icon:focus-visible .tooltip {
     opacity: 1;
     visibility: visible;
   }
