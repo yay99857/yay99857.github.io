@@ -42,26 +42,28 @@
     isDockOpen.value = true
   }
 
-  // Fechar com swipe (botão back)
-  const closeWithSwipe = () => {
-    closeType.value = 'swipe'
+  const closeView = (type: 'swipe' | 'scale') => {
+    closeType.value = type
     isAppOpen.value = false
     isDockOpen.value = false
-    setTimeout(() => {
-      selectedApp.value = null
-      selectedDockApp.value = null
-    }, 300)
   }
 
-  // Fechar com scale (botão home)
-  const closeWithScale = () => {
-    closeType.value = 'scale'
-    isAppOpen.value = false
-    isDockOpen.value = false
-    setTimeout(() => {
-      selectedApp.value = null
-      selectedDockApp.value = null
-    }, 300)
+  // Fechar com swipe (botão back dentro do app)
+  const closeWithSwipe = () => closeView('swipe')
+
+  // Fechar com scale (botão home do aparelho)
+  const closeWithScale = () => closeView('scale')
+
+  // A referência do app só é descartada quando a animação de saída termina,
+  // via @after-leave. Com um setTimeout fixo o conteúdo sumia no meio do fade,
+  // porque as transições levam 350-400ms e o timer era de 300ms. O guard cobre
+  // o caso de reabrir antes da saída completar, que cancela o leave.
+  const clearApp = () => {
+    if (!isAppOpen.value) selectedApp.value = null
+  }
+
+  const clearDockApp = () => {
+    if (!isDockOpen.value) selectedDockApp.value = null
   }
 </script>
 
@@ -79,12 +81,18 @@
         </Transition>
 
         <!-- App View -->
-        <Transition :name="closeType === 'swipe' ? 'app-swipe' : 'app-scale'">
+        <Transition
+          :name="closeType === 'swipe' ? 'app-swipe' : 'app-scale'"
+          @after-leave="clearApp"
+        >
           <AppView v-if="isAppOpen && selectedApp" :app="selectedApp" @close="closeWithSwipe" />
         </Transition>
 
         <!-- Dock View -->
-        <Transition :name="closeType === 'swipe' ? 'app-swipe' : 'app-scale'">
+        <Transition
+          :name="closeType === 'swipe' ? 'app-swipe' : 'app-scale'"
+          @after-leave="clearDockApp"
+        >
           <DockView
             v-if="isDockOpen && selectedDockApp"
             :app="selectedDockApp"
