@@ -64,8 +64,10 @@
         <img
           v-if="app.screenshot"
           :src="app.screenshot"
-          :alt="app.name"
+          :alt="`Captura de tela do projeto ${app.name}`"
           class="screenshot"
+          loading="lazy"
+          decoding="async"
           @click="openImageViewer"
         />
         <div v-else class="screenshot-placeholder">

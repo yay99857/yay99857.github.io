@@ -13,7 +13,7 @@ export const appSections: AppSection[] = [
         description:
           'Plataforma de matchmaking para encontrar duos e parceiros de jogo. Uma rede social, chat em tempo real e integração com pagamentos para apoiadores.',
         technologies: ['Next.js', 'Stripe', 'GoLang', 'Redis', 'Supabase'],
-        screenshot: '/jogajunto.png',
+        screenshot: '/jogajunto.webp',
         demoUrl: 'https://juntojoga.vercel.app/',
       },
       {
@@ -24,7 +24,7 @@ export const appSections: AppSection[] = [
         description:
           'Player de música simples e minimalista. Reproduz músicas do YouTube com interface limpa e controles intuitivos.',
         technologies: ['React', 'YouTube API', 'Redux'],
-        screenshot: '/calme.png',
+        screenshot: '/calme.webp',
         demoUrl: 'https://calme.vercel.app/',
       },
       {
@@ -35,7 +35,7 @@ export const appSections: AppSection[] = [
         description:
           'Você está olhando para ele! Um portfólio interativo com estética retrô, simulando a interface de um cetigo para apresentar meus projetos de forma criativa.',
         technologies: ['Vue.js'],
-        screenshot: '/hello.png',
+        screenshot: '/hello.webp',
       },
     ],
   },
@@ -76,7 +76,7 @@ export const appSections: AppSection[] = [
         description:
           'Editor de notas minimalista com suporte a Markdown. Interface limpa e focada na escrita, com preview em tempo real.',
         technologies: ['React.js', 'Tauri', 'SQLite'],
-        screenshot: '/skuld.png',
+        screenshot: '/skuld.webp',
         githubUrl: 'https://github.com/yay99857/skuld',
         downloadUrl: 'https://github.com/yay99857/skuld/releases/tag/0.1.0',
       },
