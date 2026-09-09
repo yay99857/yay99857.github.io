@@ -1,29 +1,7 @@
 <script setup lang="ts">
-  import { ref, onMounted } from 'vue'
+  import { useTheme } from '@/composables/useTheme'
 
-  const isDark = ref(false)
-
-  const toggleTheme = () => {
-    isDark.value = !isDark.value
-    applyTheme()
-  }
-
-  const applyTheme = () => {
-    if (isDark.value) {
-      document.documentElement.classList.add('dark')
-      localStorage.setItem('theme', 'dark')
-    } else {
-      document.documentElement.classList.remove('dark')
-      localStorage.setItem('theme', 'light')
-    }
-  }
-
-  onMounted(() => {
-    const savedTheme = localStorage.getItem('theme')
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
-    isDark.value = savedTheme === 'dark' || (!savedTheme && prefersDark)
-    applyTheme()
-  })
+  const { isDark, toggleTheme } = useTheme()
 </script>
 
 <template>
@@ -59,5 +37,10 @@
   .theme-toggle:active {
     transform: translate(2px, 2px);
     box-shadow: none;
+  }
+
+  .theme-toggle:focus-visible {
+    outline: 2px solid var(--toggle-bg);
+    outline-offset: 3px;
   }
 </style>

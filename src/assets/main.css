@@ -116,6 +116,10 @@ body {
   min-height: 100vh;
   font-family: var(--font-body);
   color: var(--text-primary);
+  /* o fundo precisa estar aqui, e não só em .home: esta folha é a que carrega
+     junto com o documento, enquanto .home vem no chunk da rota. Sem isto o
+     primeiro paint no tema escuro é branco. */
+  background-color: var(--bg-gradient-1);
 }
 
 #app {

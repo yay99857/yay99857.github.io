@@ -8,6 +8,19 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <title>João Marco</title>
+    <script>
+      // Aplica o tema antes do primeiro paint: se esperarmos o Vue montar, quem
+      // usa o modo escuro vê a página branca por um frame.
+      try {
+        var salvo = localStorage.getItem('theme')
+        var escuro = salvo
+          ? salvo === 'dark'
+          : window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (escuro) document.documentElement.classList.add('dark')
+      } catch (e) {
+        // localStorage indisponível: segue no tema claro
+      }
+    </script>
   </head>
   <body>
     <div id="app"></div>
