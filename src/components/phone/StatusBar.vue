@@ -1,6 +1,5 @@
 <script setup lang="ts">
   import { ref, onMounted, onUnmounted } from 'vue'
-  import { Icon } from '@iconify/vue'
 
   const currentTime = ref('')
 
@@ -29,14 +28,14 @@
 <template>
   <div class="status-bar">
     <div class="status-left">
-      <Icon icon="mdi:signal-cellular-3" class="status-icon" />
+      <v-icon name="md-signalcellularalt" class="status-icon" />
       <span class="network-type">1G</span>
     </div>
     <div class="status-center">
       <span class="time">{{ currentTime }}</span>
     </div>
     <div class="status-right">
-      <Icon icon="mdi:battery" class="status-icon" />
+      <v-icon name="md-batteryfull" class="status-icon" />
     </div>
   </div>
 </template>

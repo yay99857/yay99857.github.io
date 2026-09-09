@@ -2,7 +2,7 @@
 export interface AppItem {
   id: string
   name: string
-  icon: string // Iconify icon name
+  icon: string // nome do ícone em oh-vue-icons, ex.: "md-gamepad" (ver src/icons.ts)
   description?: string // Descrição completa do projeto
   category: string
   technologies?: string[] // Array de tecnologias usadas

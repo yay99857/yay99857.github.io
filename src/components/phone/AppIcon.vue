@@ -1,6 +1,4 @@
 <script setup lang="ts">
-  import { Icon } from '@iconify/vue'
-
   interface Props {
     icon: string
     name: string
@@ -21,7 +19,7 @@
 <template>
   <button type="button" class="app-icon" :aria-label="name" @click="$emit('click')">
     <span class="icon-container">
-      <Icon :icon="icon" class="icon" />
+      <v-icon :name="icon" class="icon" />
       <span v-if="showTooltip" class="tooltip">{{ name }}</span>
     </span>
     <span v-if="showName" class="app-name">{{ name }}</span>

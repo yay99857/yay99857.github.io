@@ -8,7 +8,7 @@ export const appSections: AppSection[] = [
       {
         id: '1',
         name: 'JogaJunto',
-        icon: 'mdi:gamepad-variant',
+        icon: 'md-gamepad',
         category: 'web',
         description:
           'Plataforma de matchmaking para encontrar duos e parceiros de jogo. Uma rede social, chat em tempo real e integração com pagamentos para apoiadores.',
@@ -19,7 +19,7 @@ export const appSections: AppSection[] = [
       {
         id: '2',
         name: 'Calme',
-        icon: 'mdi:music',
+        icon: 'md-musicnote',
         category: 'web',
         description:
           'Player de música simples e minimalista. Reproduz músicas do YouTube com interface limpa e controles intuitivos.',
@@ -30,7 +30,7 @@ export const appSections: AppSection[] = [
       {
         id: '3',
         name: 'Hello',
-        icon: 'mdi:post',
+        icon: 'md-article',
         category: 'web',
         description:
           'Você está olhando para ele! Um portfólio interativo com estética retrô, simulando a interface de um cetigo para apresentar meus projetos de forma criativa.',
@@ -71,7 +71,7 @@ export const appSections: AppSection[] = [
       {
         id: '7',
         name: 'Skuld',
-        icon: 'mdi:note-edit',
+        icon: 'md-editnote',
         category: 'tools',
         description:
           'Editor de notas minimalista com suporte a Markdown. Interface limpa e focada na escrita, com preview em tempo real.',
@@ -85,8 +85,8 @@ export const appSections: AppSection[] = [
 ]
 
 export const dockApps: DockApp[] = [
-  { id: 'about', name: 'Sobre Mim', icon: 'mdi:account-circle', route: '/about' },
-  { id: 'gallery', name: 'Galeria', icon: 'mdi:image-multiple', route: '/gallery' },
-  { id: 'skills', name: 'Skills', icon: 'mdi:code-tags', route: '/skills' },
-  { id: 'contact', name: 'Contato', icon: 'mdi:email', route: '/contact' },
+  { id: 'about', name: 'Sobre Mim', icon: 'md-accountcircle', route: '/about' },
+  { id: 'gallery', name: 'Galeria', icon: 'md-photolibrary', route: '/gallery' },
+  { id: 'skills', name: 'Skills', icon: 'md-code', route: '/skills' },
+  { id: 'contact', name: 'Contato', icon: 'md-email', route: '/contact' },
 ]
