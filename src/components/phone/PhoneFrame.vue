@@ -20,16 +20,16 @@
 
   const currentPage = ref(1)
 
-  // Estado para app/dock selecionado
+  // Currently selected app / dock app
   const selectedApp = ref<AppItem | null>(null)
   const selectedDockApp = ref<DockApp | null>(null)
   const isAppOpen = ref(false)
   const isDockOpen = ref(false)
 
-  // Controle do tipo de fechamento (swipe ou scale)
+  // Which close animation to play
   const closeType = ref<'swipe' | 'scale'>('scale')
 
-  // Computed para verificar se alguma view está aberta
+  // Whether any view is covering the home screen
   const isAnyViewOpen = computed(() => isAppOpen.value || isDockOpen.value)
 
   const handleAppClick = (app: AppItem) => {
@@ -48,16 +48,16 @@
     isDockOpen.value = false
   }
 
-  // Fechar com swipe (botão back dentro do app)
+  // Close via the back button inside the app
   const closeWithSwipe = () => closeView('swipe')
 
-  // Fechar com scale (botão home do aparelho)
+  // Close via the hardware-style home button
   const closeWithScale = () => closeView('scale')
 
-  // A referência do app só é descartada quando a animação de saída termina,
-  // via @after-leave. Com um setTimeout fixo o conteúdo sumia no meio do fade,
-  // porque as transições levam 350-400ms e o timer era de 300ms. O guard cobre
-  // o caso de reabrir antes da saída completar, que cancela o leave.
+  // The selected app is only dropped once the leave animation has finished,
+  // via @after-leave. A fixed setTimeout used to clear it mid-fade, because
+  // the transitions run 350-400ms while the timer was 300ms. The guard covers
+  // reopening before the leave completes, which cancels it.
   const clearApp = () => {
     if (!isAppOpen.value) selectedApp.value = null
   }

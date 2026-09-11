@@ -35,7 +35,7 @@
         <v-icon name="md-chevronleft" />
       </button>
       <div class="app-title">
-        <!-- decorativo: o nome do app já aparece ao lado, e o AppIcon é um <button> -->
+        <!-- decorative: the app name is already next to it, and AppIcon is a <button> -->
         <AppIcon
           :icon="app.icon"
           :name="app.name"

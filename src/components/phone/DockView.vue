@@ -10,7 +10,7 @@
     close: []
   }>()
 
-  // Dados de cada seção do dock
+  // Content for each dock section
   const dockContent = {
     about: {
       title: 'Sobre Mim',

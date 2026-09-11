@@ -69,7 +69,7 @@ describe('PhoneFrame', () => {
   })
 
   afterEach(() => {
-    // StatusBar mantém um setInterval; desmontar evita timer vazando entre testes
+    // StatusBar holds a setInterval; unmounting keeps it from leaking across tests
     wrapper.unmount()
   })
 

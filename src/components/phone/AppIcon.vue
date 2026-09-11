@@ -34,7 +34,7 @@
     gap: 6px;
     cursor: pointer;
     transition: transform 0.1s ease;
-    /* reset do <button> para preservar a aparência que o <div> tinha */
+    /* reset the <button> defaults so it still looks like the original <div> */
     padding: 0;
     background: none;
     border: none;

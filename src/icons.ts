@@ -1,13 +1,13 @@
-// Registro central dos ícones usados na interface.
+// Central registry for every icon used in the UI.
 //
-// O projeto usa uma única biblioteca de ícones: oh-vue-icons. Ela embute o SVG
-// no bundle, ao contrário do @iconify/vue, que buscava cada ícone na API do
-// Iconify em runtime — o que fazia os ícones do grid e do dock aparecerem
-// vazios no primeiro carregamento e quebrava offline.
+// The project relies on a single icon library: oh-vue-icons, which inlines the
+// SVG into the bundle. The previous @iconify/vue setup fetched each icon from
+// the Iconify API at runtime, so the grid and dock icons rendered empty on
+// first load and did not work offline.
 //
-// Ícones novos precisam ser importados e adicionados a addIcons() aqui; os
-// nomes usados nos templates e em data/projects.ts são a versão kebab-case
-// destes (MdGamepad -> "md-gamepad").
+// New icons must be imported and passed to addIcons() here. The names used in
+// templates and in data/mockProjects.ts are the kebab-case form of these
+// identifiers (MdGamepad -> "md-gamepad").
 import { OhVueIcon, addIcons } from 'oh-vue-icons'
 import {
   MdAccountcircle,

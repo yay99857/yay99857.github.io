@@ -5,11 +5,11 @@ export type Theme = 'light' | 'dark'
 export const THEME_STORAGE_KEY = 'theme'
 
 /**
- * Estado do tema, compartilhado por toda a aplicação.
+ * Application-wide theme state.
  *
- * A classe `dark` no <html> já foi aplicada pelo script inline do index.html,
- * antes do primeiro paint — aqui só lemos o que ele decidiu, para não haver
- * divergência entre o que está na tela e o que o componente acha que está.
+ * The `dark` class on <html> has already been set by the inline script in
+ * index.html, before first paint. We only read back what it decided, so the
+ * toggle never disagrees with what is actually rendered.
  */
 const isDark = ref(
   typeof document !== 'undefined' && document.documentElement.classList.contains('dark')
@@ -21,8 +21,8 @@ function apply(theme: Theme) {
   try {
     localStorage.setItem(THEME_STORAGE_KEY, theme)
   } catch {
-    // localStorage pode estar indisponível (modo privado, cookies bloqueados);
-    // o tema ainda funciona nesta sessão, só não é lembrado na próxima.
+    // localStorage may be unavailable (private mode, blocked cookies). The
+    // theme still applies for this session, it just is not remembered.
   }
 }
 
