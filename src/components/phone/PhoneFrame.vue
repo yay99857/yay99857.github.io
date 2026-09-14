@@ -20,6 +20,24 @@
 
   const currentPage = ref(1)
 
+  // The opening view zooms out of the icon that was tapped. The icon's centre is
+  // stored as a percentage of the content box and fed to transform-origin; with
+  // no origin (keyboard activation in a stale layout) it falls back to the centre.
+  const contentEl = ref<HTMLElement | null>(null)
+  const originStyle = ref<Record<string, string>>({})
+
+  const setOrigin = (origin: DOMRect | undefined) => {
+    const box = contentEl.value?.getBoundingClientRect()
+    if (!origin || !box || box.width === 0 || box.height === 0) {
+      originStyle.value = {}
+      return
+    }
+    originStyle.value = {
+      '--open-origin-x': `${((origin.left + origin.width / 2 - box.left) / box.width) * 100}%`,
+      '--open-origin-y': `${((origin.top + origin.height / 2 - box.top) / box.height) * 100}%`,
+    }
+  }
+
   // Currently selected app / dock app
   const selectedApp = ref<AppItem | null>(null)
   const selectedDockApp = ref<DockApp | null>(null)
@@ -32,12 +50,14 @@
   // Whether any view is covering the home screen
   const isAnyViewOpen = computed(() => isAppOpen.value || isDockOpen.value)
 
-  const handleAppClick = (app: AppItem) => {
+  const handleAppClick = (app: AppItem, origin?: DOMRect) => {
+    setOrigin(origin)
     selectedApp.value = app
     isAppOpen.value = true
   }
 
-  const handleDockClick = (app: DockApp) => {
+  const handleDockClick = (app: DockApp, origin?: DOMRect) => {
+    setOrigin(origin)
     selectedDockApp.value = app
     isDockOpen.value = true
   }
@@ -72,7 +92,12 @@
     <div class="phone-notch"></div>
     <div class="phone-screen">
       <StatusBar />
-      <div class="phone-content" :class="{ 'close-swipe': closeType === 'swipe' }">
+      <div
+        ref="contentEl"
+        class="phone-content"
+        :class="{ 'close-swipe': closeType === 'swipe' }"
+        :style="originStyle"
+      >
         <!-- Home Screen -->
         <Transition :name="closeType === 'swipe' ? 'home-swipe' : 'home-scale'">
           <div v-show="!isAnyViewOpen" class="home-screen">
@@ -241,6 +266,19 @@
     transform: scale(1.05);
   }
 
+  /* The opening view grows out of the tapped icon; both close animations keep
+     their own origin, so only the enter states read the custom properties. */
+  .app-scale-enter-active,
+  .app-swipe-enter-active {
+    transform-origin: var(--open-origin-x, 50%) var(--open-origin-y, 50%);
+  }
+
+  .app-scale-enter-from,
+  .app-swipe-enter-from {
+    opacity: 0;
+    transform: scale(0.15);
+  }
+
   /* App - Scale */
   .app-scale-enter-active {
     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -248,11 +286,6 @@
 
   .app-scale-leave-active {
     transition: all 0.35s ease-out;
-  }
-
-  .app-scale-enter-from {
-    opacity: 0;
-    transform: scale(0.5);
   }
 
   .app-scale-leave-to {
@@ -288,11 +321,6 @@
 
   .app-swipe-leave-active {
     transition: all 0.3s ease-in;
-  }
-
-  .app-swipe-enter-from {
-    opacity: 0;
-    transform: scale(0.5);
   }
 
   .app-swipe-leave-to {

@@ -9,11 +9,11 @@
   defineProps<Props>()
 
   const emit = defineEmits<{
-    'app-click': [app: AppItem]
+    'app-click': [app: AppItem, origin: DOMRect | undefined]
   }>()
 
-  const openApp = (app: AppItem) => {
-    emit('app-click', app)
+  const openApp = (app: AppItem, origin: DOMRect | undefined) => {
+    emit('app-click', app, origin)
   }
 </script>
 
@@ -27,7 +27,7 @@
           :key="app.id"
           :icon="app.icon"
           :name="app.name"
-          @click="openApp(app)"
+          @click="(origin) => openApp(app, origin)"
         />
       </div>
     </div>

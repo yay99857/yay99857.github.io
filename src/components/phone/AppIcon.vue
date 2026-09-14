@@ -1,4 +1,6 @@
 <script setup lang="ts">
+  import { ref } from 'vue'
+
   interface Props {
     icon: string
     name: string
@@ -11,13 +13,18 @@
     showTooltip: false,
   })
 
-  defineEmits<{
-    click: []
+  const emit = defineEmits<{
+    // The icon's on-screen box, so the opening view can zoom out of it
+    click: [origin: DOMRect | undefined]
   }>()
+
+  const el = ref<HTMLButtonElement | null>(null)
+
+  const handleClick = () => emit('click', el.value?.getBoundingClientRect())
 </script>
 
 <template>
-  <button type="button" class="app-icon" :aria-label="name" @click="$emit('click')">
+  <button ref="el" type="button" class="app-icon" :aria-label="name" @click="handleClick">
     <span class="icon-container">
       <v-icon :name="icon" class="icon" />
       <span v-if="showTooltip" class="tooltip">{{ name }}</span>

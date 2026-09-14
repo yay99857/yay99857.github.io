@@ -24,9 +24,9 @@ import {
   MdMusicnote,
   MdOpeninnew,
   MdPhotolibrary,
+  MdRadio,
   MdSignalcellularalt,
   BiGithub,
-  BiImage,
   BiLinkedin,
 } from 'oh-vue-icons/icons'
 
@@ -48,9 +48,9 @@ export function registerIcons() {
     MdMusicnote,
     MdOpeninnew,
     MdPhotolibrary,
+    MdRadio,
     MdSignalcellularalt,
     BiGithub,
-    BiImage,
     BiLinkedin
   )
 }
