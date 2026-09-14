@@ -7,14 +7,13 @@ export const appSections: AppSection[] = [
     apps: [
       {
         id: '1',
-        name: 'JogaJunto',
+        name: 'Dora',
         icon: 'md-gamepad',
         category: 'web',
         description:
           'Plataforma de matchmaking para encontrar duos e parceiros de jogo. Uma rede social, chat em tempo real e integração com pagamentos para apoiadores.',
         technologies: ['Next.js', 'Stripe', 'GoLang', 'Redis', 'Supabase'],
-        screenshot: '/jogajunto.webp',
-        demoUrl: 'https://juntojoga.vercel.app/',
+        screenshot: '/dora.webp',
       },
       {
         id: '2',
@@ -28,12 +27,24 @@ export const appSections: AppSection[] = [
         demoUrl: 'https://calme.vercel.app/',
       },
       {
+        id: '4',
+        name: 'Suguna',
+        icon: 'md-radio',
+        category: 'web',
+        description:
+          'Rádio pela internet em forma de atlas. Um globo ortográfico desenhado em D3 plota oito mil estações do Radio Browser; escolha um país e a faixa de sintonia carrega as emissoras de lá. Player com suporte a HLS, favoritos e histórico guardados no próprio navegador.',
+        technologies: ['React.js', 'TypeScript', 'D3', 'HLS.js', 'Vite'],
+        screenshot: '/suguna.webp',
+        demoUrl: 'https://suguna-web.vercel.app/',
+        githubUrl: 'https://github.com/yay99857/suguna-web',
+      },
+      {
         id: '3',
         name: 'Hello',
         icon: 'md-article',
         category: 'web',
         description:
-          'Você está olhando para ele! Um portfólio interativo com estética retrô, simulando a interface de um cetigo para apresentar meus projetos de forma criativa.',
+          'Você está olhando para ele. Um portfólio em formato de celular retrô: os projetos viram ícones na tela inicial, com dock, tema claro/escuro e visualizador de imagens.',
         technologies: ['Vue.js'],
         screenshot: '/hello.webp',
       },
@@ -70,15 +81,14 @@ export const appSections: AppSection[] = [
     apps: [
       {
         id: '7',
-        name: 'Skuld',
+        name: 'Noted',
         icon: 'md-editnote',
         category: 'tools',
         description:
-          'Editor de notas minimalista com suporte a Markdown. Interface limpa e focada na escrita, com preview em tempo real.',
-        technologies: ['React.js', 'Tauri', 'SQLite'],
-        screenshot: '/skuld.webp',
-        githubUrl: 'https://github.com/yay99857/skuld',
-        downloadUrl: 'https://github.com/yay99857/skuld/releases/tag/0.1.0',
+          'Caderno de notas em Markdown para desktop, local-first: tudo fica num SQLite na sua máquina. Editor CodeMirror com modo vim opcional, preview ao lado, busca full-text que ignora acentos, wiki links com backlinks e histórico de versões.',
+        technologies: ['React.js', 'Tauri', 'SQLite', 'CodeMirror'],
+        screenshot: '/noted.webp',
+        githubUrl: 'https://github.com/yay99857/noted',
       },
     ],
   },
