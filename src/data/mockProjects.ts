@@ -14,7 +14,7 @@ export const appSections: AppSection[] = [
           'Plataforma de matchmaking para encontrar duos e parceiros de jogo. Uma rede social, chat em tempo real e integração com pagamentos para apoiadores.',
         technologies: ['Next.js', 'Stripe', 'GoLang', 'Redis', 'Supabase'],
         screenshot: '/bubie.webp',
-        demoUrl: 'https://bubie.vercel.app/',
+        demoUrl: 'https://bubie.gg/',
       },
       {
         id: '2',
