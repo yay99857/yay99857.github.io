@@ -7,13 +7,14 @@ export const appSections: AppSection[] = [
     apps: [
       {
         id: '1',
-        name: 'Dora',
+        name: 'Bubie',
         icon: 'md-gamepad',
         category: 'web',
         description:
           'Plataforma de matchmaking para encontrar duos e parceiros de jogo. Uma rede social, chat em tempo real e integração com pagamentos para apoiadores.',
         technologies: ['Next.js', 'Stripe', 'GoLang', 'Redis', 'Supabase'],
-        screenshot: '/dora.webp',
+        screenshot: '/bubie.webp',
+        demoUrl: 'https://bubie.vercel.app/',
       },
       {
         id: '2',
@@ -89,6 +90,16 @@ export const appSections: AppSection[] = [
         technologies: ['React.js', 'Tauri', 'SQLite', 'CodeMirror'],
         screenshot: '/noted.webp',
         githubUrl: 'https://github.com/yay99857/noted',
+      },
+      {
+        id: '8',
+        name: 'Pontilha',
+        icon: 'md-brush',
+        category: 'tools',
+        description:
+          'Editor de pixel art para Linux, feito para desenhar a mão ou ser pilotado por um agente de IA: cada comando aparece ao vivo na janela. Camadas, animação com onion skin, seleção com varinha mágica, rampas de cor, simetria, modo tile e grade isométrica, com exportação em PNG, GIF e folha de sprites.',
+        technologies: ['React.js', 'TypeScript', 'Tauri', 'Rust', 'Zustand'],
+        screenshot: '/pontilha.webp',
       },
     ],
   },
